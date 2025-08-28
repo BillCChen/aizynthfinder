@@ -1,0 +1,24 @@
+search:
+  algorithm: aizynthfinder.search.retrostar.search_tree.SearchTree
+  algorithm_config:
+    molecule_cost:
+      cost: aizynthfinder.search.retrostar.cost.RetroStarCost
+      model_path: /root/retro_synthesis/aizynthfinder/data/retrostar_value_model.pickle
+      fingerprint_length: 2048
+      fingerprint_radius: 2
+      dropout_rate: 0.1
+    max_transforms: 10
+    return_first: True
+    prune_cycles_in_search: True
+  iteration_limit: 1000
+  time_limit: 300
+expansion:
+  uspto:
+    - /root/retro_synthesis/aizynthfinder/data/uspto_model.onnx
+    - /root/retro_synthesis/aizynthfinder/data/uspto_unique_templates.csv.gz
+  ringbreaker:
+    - /root/retro_synthesis/aizynthfinder/data/uspto_ringbreaker_model.onnx
+    - /root/retro_synthesis/aizynthfinder/data/uspto_ringbreaker_unique_templates.csv.gz
+
+stock:
+  zinc: /root/retro_synthesis/aizynthfinder/data/zinc_stock_17_04_20.hdf5
